@@ -6,7 +6,7 @@ describe('Given a web page', () => {
 
     const width = 1920;
     const height = 1080;
-    const untilZeroNetworkConnectionsForHalfASecond = { waitUntil: 'networkidle2' };
+    const untilZeroNetworkConnectionsForHalfASecond = { waitUntil: 'networkidle0' };
 
     beforeAll(async () => {
         browser = await puppeteer.launch({
@@ -16,21 +16,21 @@ describe('Given a web page', () => {
                 '--disable-setuid-sandbox'
             ],
             headless: true,
-            // slowMo: 80
+            slowMo: 80
         });
         page = await browser.newPage();
         await page.setViewport({
             height,
             width
         });
-        await page.goto('https://www.google.com/');
+        await page.goto('https://example.com');
         await page.waitForNavigation(untilZeroNetworkConnectionsForHalfASecond);
     });
 
     test('page title', async () => {
         const pageTitle = await page.title();
 
-        const expectedTitle = 'Google';
+        const expectedTitle = 'Example Domain';
 
         expect(pageTitle).toEqual(expectedTitle);
     });
