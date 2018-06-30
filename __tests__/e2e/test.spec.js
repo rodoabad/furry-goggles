@@ -6,7 +6,7 @@ describe('Given a web page', () => {
 
     const width = 1920;
     const height = 1080;
-    const untilZeroNetworkConnectionsForHalfASecond = { waitUntil: 'networkidle0' };
+    const untilZeroNetworkConnectionsForHalfASecond = { waitUntil: 'networkidle2' };
 
     beforeAll(async () => {
         browser = await puppeteer.launch({
@@ -23,14 +23,16 @@ describe('Given a web page', () => {
             height,
             width
         });
-        await page.goto('https://rodoabad-dibidendo-ui.herokuapp.com/');
+        await page.goto('https://www.google.com/');
         await page.waitForNavigation(untilZeroNetworkConnectionsForHalfASecond);
     });
 
     test('page title', async () => {
         const pageTitle = await page.title();
 
-        expect(pageTitle).toEqual('');
+        const expectedTitle = 'Google';
+
+        expect(pageTitle).toEqual(expectedTitle);
     });
 
     afterAll(async () => {
