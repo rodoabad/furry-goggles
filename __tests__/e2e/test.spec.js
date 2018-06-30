@@ -41,7 +41,6 @@ describe('Given a web page', async () => {
         const expectedTitle = 'Google';
 
         expect(pageTitle).toEqual(expectedTitle);
-
     });
 
     afterEach(async () => {
