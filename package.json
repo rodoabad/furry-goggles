@@ -1,0 +1,20 @@
+{
+  "name": "furry-goggles",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodoabad/furry-goggles.git"
+  },
+  "author": "Rodo Abad <rodoabad@gmail.com> (https://github.com/rodoabad)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rodoabad/furry-goggles/issues"
+  },
+  "homepage": "https://github.com/rodoabad/furry-goggles#readme"
+}
