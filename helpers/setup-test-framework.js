@@ -1,3 +1,3 @@
 // Prevent timeouts for `puppeteer`
 
-jest.setTimeout(10000);
+jest.setTimeout(30000);
