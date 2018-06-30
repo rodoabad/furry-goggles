@@ -1,14 +1,13 @@
 const puppeteer = require('puppeteer');
 
-describe('Given a web page', () => {
+describe('Given a web page', async () => {
     let browser,
         page;
 
     const width = 1920;
     const height = 1080;
-    const untilZeroNetworkConnectionsForHalfASecond = { waitUntil: 'networkidle0' };
 
-    beforeAll(async () => {
+    beforeEach(async () => {
         browser = await puppeteer.launch({
             args: [
                 `--window-size=${width},${height}`,
@@ -23,19 +22,29 @@ describe('Given a web page', () => {
             height,
             width
         });
-        await page.goto('https://example.com');
-        await page.waitForNavigation(untilZeroNetworkConnectionsForHalfASecond);
+        await page.goto('https://google.com');
+    });
+
+    it('should pass visual regression', async () => {
+        const screenshot = await page.screenshot();
+
+        expect(screenshot).toMatchImageSnapshot({
+            customSnapshotIdentifier: 'screenshot',
+            failureThreshold: '0.05',
+            failureThresholdType: 'percent'
+        });
     });
 
     test('page title', async () => {
         const pageTitle = await page.title();
 
-        const expectedTitle = 'Example Domain';
+        const expectedTitle = 'Google';
 
         expect(pageTitle).toEqual(expectedTitle);
+
     });
 
-    afterAll(async () => {
+    afterEach(async () => {
         await browser.close();
     });
 });
