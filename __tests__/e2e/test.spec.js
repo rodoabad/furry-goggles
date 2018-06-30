@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-describe('Given the a web page', () => {
+describe('Given a web page', () => {
     let browser,
         page;
 
